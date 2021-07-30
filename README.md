@@ -16,7 +16,7 @@ and if there is any unwanted letters except x,X,o,O and dot). Game only allows l
 also I added invalid3.txt to the directory which is also an invalid game. You can try to load this in game.
 
 
-### 1) New Game
+1) New Game
 ---
 
 - When a new game starts choose class represantation first
