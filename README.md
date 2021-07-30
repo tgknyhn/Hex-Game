@@ -29,7 +29,7 @@ also I added invalid3.txt to the directory which is also an invalid game. You ca
 - Your games is listed by their class represantation even if you leave your game with or without finishing it   
 
 
-### 2) Continue to an existing game
+### Continue to an existing game
 
 - All games will be listed here. 
 
