@@ -30,6 +30,7 @@ also I added invalid3.txt to the directory which is also an invalid game. You ca
 
 
 ### Continue to an existing game
+--
 
 - All games will be listed here. 
 
