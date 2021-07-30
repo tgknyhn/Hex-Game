@@ -6,7 +6,8 @@ If it says: "file is up to date", then first enter "make clean"
 after that enter "make" to execute the game.
 
 IMPORTANT!
-----------
+---
+
 To check if the global function that takes AbstractHex pointer works fine I let the game include "invalid1.txt" and "invalid2.txt". 
 Normally you can't make any invalid moves, game doesn't allow you to do that but if you change a .txt file and load it then you can create an invalid game.
 If you try to load these kind of games, game doesn't allow that too (code only checks if move count of X and O are equal(or +1 -1 of that) 
@@ -16,7 +17,7 @@ also I added invalid3.txt to the directory which is also an invalid game. You ca
 
 
 ### 1) New Game
------------
+---
 
 - When a new game starts choose class represantation first
 
