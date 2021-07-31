@@ -1,11 +1,13 @@
 Author: Ahmet Tuğkan Ayhan
 
-To compile the game write "make".
+The game runs on Terminal(Windows Terminal/Powershell/Ubuntu Terminal/WSL etc.). After compiling the code using the Makefile, you can run the file created with name "RunThis" 
+
+If you are using "make" to compile the game just write "make" to the terminal. For Windows Terminal/Powershell users, you may encounter with " '.' is not recognized as an internal or external command, " error. If you do, the program already compiled, so just write ".\RunThis" to the terminal without qommas.  
 
 If it says: "file is up to date", then first enter "make clean" 
 after that enter "make" to execute the game.
 
-IMPORTANT!
+Important!
 ---
 
 To check if the global function that takes AbstractHex pointer works fine I let the game include "invalid1.txt" and "invalid2.txt". 
@@ -13,9 +15,13 @@ Normally you can't make any invalid moves, game doesn't allow you to do that but
 If you try to load these kind of games, game doesn't allow that too (code only checks if move count of X and O are equal(or +1 -1 of that) 
 and if there is any unwanted letters except x,X,o,O and dot). Game only allows loading invalid games that named "invalid1.txt" and "invalid2.txt". and this is only for making sure that global function works correctly. and it does :)
 
-also I added invalid3.txt to the directory which is also an invalid game. You can try to load this in game.
+also I added invalid3.txt to the directory which is also an invalid game. You can try to load this in game(it won't load actually).
 
-1) New Game
+Menu
+---
+[MENU](http://i.prntscr.com/WutFkeB5QZ2wUcu7IQtGJw.png)
+
+New Game
 ---
 
 - When a new game starts choose class represantation first
@@ -29,8 +35,8 @@ also I added invalid3.txt to the directory which is also an invalid game. You ca
 - Your games is listed by their class represantation even if you leave your game with or without finishing it   
 
 
-### Continue to an existing game
---
+Continue to an existing game
+---
 
 - All games will be listed here. 
 
@@ -40,8 +46,8 @@ also I added invalid3.txt to the directory which is also an invalid game. You ca
 
 - To continue a game write the number of the game you want to continue
 
-3) Comperision
---------------
+Comperision
+---
 
 - All games will be listed here as well
 
@@ -52,23 +58,23 @@ then 2 boards are equal.
 
 - Example input: "3 5" (without commas)
 
-5) Print Board
--------------
+Print Board
+---
 
 - You can see a game's board without playing it. 
 
 - Ideal to see finished games board 
 
-6) In game commands
--------------------
+In game commands
+---
 
-MENU           : goes to the menu screen  
-BACK           : takes last two move back
-SAVE ____.txt  : saves the current game. can be loaded anytime with LOAD command
-LOAD ____.txt  : loads the game with given name. make sure that your giving a valid .txt file. 
-RESET          : Resets the current board to it's initial state 
-R_SIZE x       : Resets the board like RESET, 'x' takes a number and board will change to that size (sizes:5-52)
-LASTMOVE       : Shows 2 last move that has been played on the board. Throws exception if there are less than 2 moves
+- MENU           : goes to the menu screen 
+- BACK           : takes last two move back 
+- SAVE ____.txt  : saves the current game. can be loaded anytime with LOAD command 
+- LOAD ____.txt  : loads the game with given name. make sure that your giving a valid .txt file 
+- RESET          : Resets the current board to it's initial state
+- R_SIZE x       : Resets the board like RESET, 'x' takes a number and board will change to that size (sizes:5-52) 
+- LASTMOVE       : Shows 2 last move that has been played on the board. Throws exception if there are less than 2 moves 
 
 ** If you load any game without saving current one, loaded game's progress will be written onto current one. So all progress will be lost.
 ** You can't continue to any finished game. But you can still see the board in 5th section of the menu
