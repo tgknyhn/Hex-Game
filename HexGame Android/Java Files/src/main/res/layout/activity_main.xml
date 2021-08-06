@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    tools:context=".MainActivity">
+
+    <!-- Center Reference  -->
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:clickable="false"
+        android:id="@+id/center">
+    </ImageView>
+
+    <!-- Main Background -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:clickable="false"
+        android:id="@+id/mainBackground">
+    </ImageView>
+
+
+    <!-- Board Background -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/frame"
+        android:layout_alignBottom="@id/cellsLayout"
+        android:layout_marginBottom="-75dp"
+        android:id="@+id/boardBackground">
+
+    </ImageView>
+
+    <!-- Buttons -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/boardBackground"
+        android:layout_marginTop="75dp"
+        android:id="@+id/RelativeLayout_Buttons">
+
+        <!-- RL Center -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/centerOfRelLayButtons"/>
+
+        <!--Information-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/centerOfRelLayButtons"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/text_opponent"
+                android:text="Opponent : computer"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:background="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_size"
+                android:text="Size : 9x9"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:background="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_difficulty"
+                android:text="Difficulty : easy"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:background="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_color"
+                android:text="Color : red"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:background="@color/black"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/centerOfRelLayButtons"
+            android:orientation="horizontal">
+
+            <!-- New Game -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:id="@+id/newGameButton"
+                android:text="New Game"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_weight="1"/>
+
+            <!-- Move Back -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/centerOfRelLayButtons"
+                android:layout_alignLeft="@+id/centerOfRelLayButtons"
+                android:background="@color/black"
+                android:id="@+id/backButton"
+                android:text="Move Back"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_weight="1"/>
+
+            <!-- Settings -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/centerOfRelLayButtons"
+                android:background="@color/black"
+                android:id="@+id/settingsButton"
+                android:text="SETTINGS"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Score Bars -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:textColor="@color/red"
+        android:text="Red Progress"></TextView>
+
+    <ProgressBar
+        android:id="@+id/redProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="50dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"></ProgressBar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/cellsLayout"
+        android:text="Blue Progress"
+        android:textColor="@color/blue"></TextView>
+
+    <ProgressBar
+        android:id="@+id/blueProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/cellsLayout"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"></ProgressBar>
+
+    <!-- Cells -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:id="@+id/cellsLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_1"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="120dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cellsLay_Row_5"
+            app:layout_constraintEnd_toEndOf="@+id/cellsLay_Row_5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_1_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_1_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_1_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_1_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_1_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_1_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_1_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_1_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_1_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_1_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_1_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_1_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_1_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_1_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_1_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_1_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_1_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_1_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_1_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_1_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_1_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_1_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_1_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_1_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_1_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_1_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_2"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="90dp"
+            app:layout_constraintBottom_toBottomOf="@id/cellsLay_Row_5"
+            app:layout_constraintEnd_toEndOf="@id/cellsLay_Row_5"
+            app:layout_constraintStart_toStartOf="@id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_2_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_2_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_2_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_2_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_2_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_2_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_2_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_2_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_2_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_2_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_2_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_2_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_2_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_2_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_2_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_2_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_2_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_2_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_2_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_2_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_2_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_2_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_2_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_2_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_2_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_2_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_3"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="@id/cellsLay_Row_5"
+            app:layout_constraintEnd_toEndOf="@+id/cellsLay_Row_5"
+            app:layout_constraintStart_toStartOf="@+id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_3_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_3_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_3_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_3_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_3_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_3_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_3_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_3_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_3_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_3_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_3_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_3_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_3_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_3_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_3_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_3_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_3_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_3_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_3_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_3_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_3_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_3_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_3_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_3_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_3_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_3_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_4"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cellsLay_Row_5"
+            app:layout_constraintEnd_toEndOf="@+id/cellsLay_Row_5"
+            app:layout_constraintStart_toStartOf="@+id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_4_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_4_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_4_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_4_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_4_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_4_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_4_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_4_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_4_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_4_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_4_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_4_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_4_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_4_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_4_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_4_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_4_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_4_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_4_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_4_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_4_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_4_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_4_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_4_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_4_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_4_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_5"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_5_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_5_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_5_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_5_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_5_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_5_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_5_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_5_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_5_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_5_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_5_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_5_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_5_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_5_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_5_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_5_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_5_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_5_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_5_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_5_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_5_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_5_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_5_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_5_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_5_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_5_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_6"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/cellsLay_Row_5"
+            app:layout_constraintStart_toStartOf="@+id/cellsLay_Row_5"
+            app:layout_constraintTop_toTopOf="@+id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_6_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_6_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_6_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_6_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_6_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_6_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_6_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_6_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_6_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_6_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_6_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_6_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_6_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_6_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_6_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_6_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_6_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_6_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_6_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_6_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_6_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_6_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_6_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_6_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_6_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_6_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_7"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="@+id/cellsLay_Row_5"
+            app:layout_constraintStart_toStartOf="@+id/cellsLay_Row_5"
+            app:layout_constraintTop_toTopOf="@+id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_7_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_7_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_7_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_7_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_7_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_7_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_7_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_7_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_7_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_7_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_7_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_7_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_7_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_7_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_7_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_7_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_7_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_7_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_7_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_7_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_7_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_7_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_7_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_7_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_7_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_7_8"></androidx.appcompat.widget.AppCompatButton>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_8"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="90dp"
+            app:layout_constraintEnd_toEndOf="@+id/cellsLay_Row_5"
+            app:layout_constraintStart_toStartOf="@+id/cellsLay_Row_5"
+            app:layout_constraintTop_toTopOf="@+id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_8_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_8_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_8_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_8_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_8_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_8_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_8_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_8_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_8_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_8_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_8_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_8_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_8_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_8_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_8_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_8_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_8_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_8_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_8_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_8_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_8_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_8_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_8_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_8_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_8_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_8_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cellsLay_Row_9"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="120dp"
+            app:layout_constraintEnd_toEndOf="@+id/cellsLay_Row_5"
+            app:layout_constraintStart_toStartOf="@+id/cellsLay_Row_5"
+            app:layout_constraintTop_toTopOf="@+id/cellsLay_Row_5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_2"
+                android:layout_marginTop="60dp"
+                android:layout_toStartOf="@id/cell_9_2"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_9_2"
+                app:layout_constraintTop_toTopOf="@+id/cell_9_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_3"
+                android:layout_marginTop="45dp"
+                android:layout_toStartOf="@id/cell_9_3"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_9_3"
+                app:layout_constraintTop_toTopOf="@+id/cell_9_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_4"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@id/cell_9_4"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_9_4"
+                app:layout_constraintTop_toTopOf="@+id/cell_9_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_5"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/cell_9_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintEnd_toStartOf="@+id/cell_9_5"
+                app:layout_constraintTop_toTopOf="@+id/cell_9_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_5"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/cell_9_5"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_9_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_9_5"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_6"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@id/cell_9_6"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_9_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_9_6"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_7"
+                android:layout_marginBottom="45dp"
+                android:layout_toEndOf="@id/cell_9_7"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_9_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_9_7"></androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cell_9_9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/cell_9_8"
+                android:layout_marginBottom="60dp"
+                android:layout_toEndOf="@id/cell_9_8"
+                android:background="@drawable/cell_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_9_5"
+                app:layout_constraintStart_toEndOf="@+id/cell_9_8"></androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>
