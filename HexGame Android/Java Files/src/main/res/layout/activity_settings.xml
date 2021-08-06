@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity"
+    android:background="@color/black"
+    android:id="@+id/settingsRelativeLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="SETTINGS"
+        android:textColor="@color/design_default_color_secondary"
+        android:textSize="40dp"/>
+
+    <!-- AI Level -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/radioGroup_AI_difficulty"
+        android:id="@+id/textView_difficulty"
+        android:text="AI Difficulty"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <RadioGroup
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/textView_boardSize"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/radioGroup_AI_difficulty"
+        android:orientation="horizontal">
+
+        <!-- Easy -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AI_easy"
+            android:text="Easy"
+            android:textColor="@color/white"
+            android:checked="true"></RadioButton>
+
+        <!-- Nominal -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AI_nominal"
+            android:text="Nominal"
+            android:textColor="@color/white"></RadioButton>
+
+        <!-- Difficult -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AI_difficult"
+            android:text="Difficult"
+            android:textColor="@color/white"></RadioButton>
+
+        <!-- Nominal -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AI_master"
+            android:text="Master"
+            android:textColor="@color/white"></RadioButton>
+
+
+    </RadioGroup>
+
+    <!-- Board Size -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/radioGroup_boardSize"
+        android:id="@+id/textView_boardSize"
+        android:text="Board Size"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <RadioGroup
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/radioGroup_boardSize"
+        android:orientation="horizontal">
+
+        <!-- 5x5 -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_5x5"
+            android:text="5x5"
+            android:textColor="@color/white"/>
+
+        <!-- 6x6 -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_6x6"
+            android:text="6x6"
+            android:textColor="@color/white"/>
+
+        <!-- 7x7 -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_7x7"
+            android:text="7x7"
+            android:textColor="@color/white"/>
+
+        <!-- 8x8 -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_8x8"
+            android:text="8x8"
+            android:textColor="@color/white"/>
+
+        <!-- 9x9 -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_9x9"
+            android:text="9x9"
+            android:textColor="@color/white"
+            android:checked="true"/>
+    </RadioGroup>
+
+     <!-- Opponent -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/radioGroup_boardSize"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView_opponent"
+        android:text="Opponent"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView_opponent"
+        android:id="@+id/radioGroup_opponent"
+        android:orientation="horizontal">
+
+        <!-- Player vs Player -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_pvp"
+            android:text="Player vs Player"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_pve"
+            android:text="Player vs Computer"
+            android:textColor="@color/white"
+            android:checked="true"/>
+
+
+        <!-- Player vs Computer -->
+
+    </RadioGroup>
+
+    <!-- Change Color -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/radioGroup_opponent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView_color"
+        android:text="Change Color"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView_color"
+        android:id="@+id/radioGroup_color"
+        android:orientation="horizontal">
+
+        <!-- Red -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_red"
+            android:text="Red"
+            android:textColor="@color/white"
+            android:checked="true"/>
+
+        <!-- Blue -->
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_blue"
+            android:text="Blue"
+            android:textColor="@color/white"/>
+
+    </RadioGroup>
+
+    <!-- Save Button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/save_button"
+        android:text="SAVE" />
+
+
+</RelativeLayout>
